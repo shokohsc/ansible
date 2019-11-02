@@ -5,7 +5,8 @@
     $> docker run \
     --rm \
     -ti \
-    -v /path/to/.ssh/id_rsa:/root/.ssh/id_rsa \
-    -v /path/to/inventory:/app/inventory \
-    -v /path/to/playbook.yml:/app/playbook.yml \
+    -v /path/to/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+    -v $(pwd):/app \
+    -e SSH_KEY_PASSWORD=$SSH_KEY_PASSWORD \
+    -w=/app \
     shokohsc/ansible -i inventory playbook.yml
