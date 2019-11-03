@@ -1,4 +1,6 @@
 FROM alpine:3
 RUN apk add --no-cache ansible openssh bash
-ENTRYPOINT ["/usr/bin/ansible-playbook"]
+ADD entrypoint.sh /init/entrypoint.sh
+WORKDIR /app
+ENTRYPOINT ["/init/entrypoint.sh"]
 CMD []
