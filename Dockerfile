@@ -1,4 +1,6 @@
-FROM alpine:3
+ARG FROM_TAG='latest'
+FROM alpine:${FROM_TAG:-latest}
+
 RUN apk add --no-cache ansible openssh bash
 RUN ansible-galaxy install nickjj.docker
 RUN pip3 install netaddr
